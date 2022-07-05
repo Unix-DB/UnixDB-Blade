@@ -16,7 +16,21 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->text('title');
+            $table->text('description');
             $table->integer('user_id');
+
+            $table->text('distribution_id');
+            $table->text('kernel_id');
+            $table->text('terminal_id');
+            $table->text('editor_id');
+            $table->text('shell_id');
+            $table->text('resolution_id');
+            $table->text('cpu_id');
+            $table->text('memory_id');
+            $table->text('gpu_id');
+
+            $table->longText('script');
+
             $table->timestamps();
         });
     }
