@@ -1,6 +1,6 @@
 <x-guest-layout>
     <div class="relative overflow-hidden">
-        <header class="relative">
+        <header class="relative" x-data="{explore:false, more:false}">
             <div class="relative bg-white">
                 <div class="absolute inset-0 shadow z-30 pointer-events-none" aria-hidden="true"></div>
                 <div class="relative z-20">
@@ -24,8 +24,8 @@
                             <nav class="flex space-x-10">
                                 <div>
                                     <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-                                    <button type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
-                                        <span>Solutions</span>
+                                    <button @click="explore = true; more = false" @click.away="explore = false" type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
+                                        <span>Explore</span>
                                         <!--
                                           Heroicon name: solid/chevron-down
 
@@ -46,7 +46,7 @@
                                         From: "opacity-100 translate-y-0"
                                         To: "opacity-0 -translate-y-1"
                                     -->
-                                    <div class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
+                                    <div x-show="explore" x-cloak class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
                                         <div class="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
                                             <a href="#" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
                                                 <div class="flex md:h-full lg:flex-col">
@@ -168,7 +168,7 @@
                                 <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Docs </a>
                                 <div>
                                     <!-- Item active: "text-gray-900", Item inactive: "text-gray-500" -->
-                                    <button type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
+                                    <button @click="more = true; explore = false" @click.away="more = false" type="button" class="text-gray-500 group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" aria-expanded="false">
                                         <span>More</span>
                                         <!--
                                           Heroicon name: solid/chevron-down
@@ -190,7 +190,7 @@
                                         From: "opacity-100 translate-y-0"
                                         To: "opacity-0 -translate-y-1"
                                     -->
-                                    <div class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg">
+                                    <div x-show="more" x-cloak class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg">
                                         <div class="absolute inset-0 flex">
                                             <div class="bg-white w-1/2"></div>
                                             <div class="bg-gray-50 w-1/2"></div>
@@ -351,15 +351,15 @@
                     From: "opacity-100 scale-100"
                     To: "opacity-0 scale-95"
                 -->
-                <div class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-                    <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+                <div class="absolute z-30 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden" x-data="{mobile: false}">
+                    <div x-show="mobile" class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                         <div class="pt-5 pb-6 px-5 sm:pb-8">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
                                 </div>
                                 <div class="-mr-2">
-                                    <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <button @click="mobile = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                                         <span class="sr-only">Close menu</span>
                                         <!-- Heroicon name: outline/x -->
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -443,5 +443,211 @@
                 </div>
             </div>
         </header>
+        <div class="py-10">
+            <div class="max-w-3xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="hidden lg:block lg:col-span-3 xl:col-span-2">
+                    <nav aria-label="Sidebar" class="sticky top-4 divide-y divide-gray-300">
+                        <div class="pb-8 space-y-1">
+                            <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-600 hover:bg-gray-50" -->
+                            <a href="#" class="bg-gray-200 text-gray-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md" aria-current="page">
+                                <!-- Heroicon name: outline/home -->
+                                <svg class="text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span class="truncate"> Home </span>
+                            </a>
+
+                            <a href="#" class="text-gray-600 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/fire -->
+                                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                                </svg>
+                                <span class="truncate"> Popular </span>
+                            </a>
+
+                            <a href="#" class="text-gray-600 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/user-group -->
+                                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span class="truncate"> Communities </span>
+                            </a>
+
+                            <a href="#" class="text-gray-600 hover:bg-gray-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md">
+                                <!-- Heroicon name: outline/trending-up -->
+                                <svg class="text-gray-400 group-hover:text-gray-500 flex-shrink-0 -ml-1 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                                <span class="truncate"> Trending </span>
+                            </a>
+                        </div>
+                        <div class="pt-10">
+                            <p class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider" id="communities-headline">My communities</p>
+                            <div class="mt-3 space-y-2" aria-labelledby="communities-headline">
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Movies </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Food </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Sports </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Animals </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Science </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Dinosaurs </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Talents </span>
+                                </a>
+
+                                <a href="#" class="group flex items-center px-3 py-2 text-sm font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50">
+                                    <span class="truncate"> Gaming </span>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <main class="lg:col-span-9 xl:col-span-6">
+                    <div class="px-4 sm:px-0">
+                        {{--<div class="sm:hidden">
+                            <label for="question-tabs" class="sr-only">Select a tab</label>
+                            <select id="question-tabs" class="block w-full rounded-md border-gray-300 text-base font-medium text-gray-900 shadow-sm focus:border-rose-500 focus:ring-rose-500">
+                                <option selected>Recent</option>
+
+                                <option>Most Liked</option>
+
+                                <option>Most Answers</option>
+                            </select>
+                        </div>--}}
+                        <div class="hidden sm:block">
+                            <nav class="relative z-0 rounded-lg shadow flex divide-x divide-gray-200" aria-label="Tabs">
+                                <!-- Current: "text-gray-900", Default: "text-gray-500 hover:text-gray-700" -->
+                                <a href="#" aria-current="page" class="text-gray-900 rounded-l-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
+                                    <span>Recent</span>
+                                    <span aria-hidden="true" class="bg-rose-500 absolute inset-x-0 bottom-0 h-0.5"></span>
+                                </a>
+
+                                <a href="#" class="text-gray-500 hover:text-gray-700 group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
+                                    <span>Most Liked</span>
+                                    <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
+                                </a>
+
+                                <a href="#" class="text-gray-500 hover:text-gray-700 rounded-r-lg group relative min-w-0 flex-1 overflow-hidden bg-white py-4 px-6 text-sm font-medium text-center hover:bg-gray-50 focus:z-10">
+                                    <span>Most Answers</span>
+                                    <span aria-hidden="true" class="bg-transparent absolute inset-x-0 bottom-0 h-0.5"></span>
+                                </a>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h1 class="sr-only">Recent questions</h1>
+                        <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
+                            <li class="relative">
+                                <div class="group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500 overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none group-hover:opacity-75">
+                                    <button type="button" class="absolute inset-0 focus:outline-none">
+                                        <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                    </button>
+                                </div>
+                                <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
+                            </li>
+
+                            <!-- More files... -->
+                        </ul>
+                    </div>
+                </main>
+                <aside class="hidden xl:block xl:col-span-4">
+                    <div class="sticky top-4 space-y-4">
+                        <section aria-labelledby="who-to-follow-heading">
+                            <div class="bg-white rounded-lg shadow">
+                                <div class="p-6">
+                                    <h2 id="who-to-follow-heading" class="text-base font-medium text-gray-900">Who to follow</h2>
+                                    <div class="mt-6 flow-root">
+                                        <ul role="list" class="-my-4 divide-y divide-gray-200">
+                                            <li class="flex items-center py-4 space-x-3">
+                                                <div class="flex-shrink-0">
+                                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-sm font-medium text-gray-900">
+                                                        <a href="#">Leonard Krasner</a>
+                                                    </p>
+                                                    <p class="text-sm text-gray-500">
+                                                        <a href="#">@leonardkrasner</a>
+                                                    </p>
+                                                </div>
+                                                <div class="flex-shrink-0">
+                                                    <button type="button" class="inline-flex items-center px-3 py-0.5 rounded-full bg-rose-50 text-sm font-medium text-rose-700 hover:bg-rose-100">
+                                                        <!-- Heroicon name: solid/plus-sm -->
+                                                        <svg class="-ml-1 mr-0.5 h-5 w-5 text-rose-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+                                                        </svg>
+                                                        <span> Follow </span>
+                                                    </button>
+                                                </div>
+                                            </li>
+
+                                            <!-- More people... -->
+                                        </ul>
+                                    </div>
+                                    <div class="mt-6">
+                                        <a href="#" class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> View all </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section aria-labelledby="trending-heading">
+                            <div class="bg-white rounded-lg shadow">
+                                <div class="p-6">
+                                    <h2 id="trending-heading" class="text-base font-medium text-gray-900">Trending</h2>
+                                    <div class="mt-6 flow-root">
+                                        <ul role="list" class="-my-4 divide-y divide-gray-200">
+                                            <li class="flex py-4 space-x-3">
+                                                <div class="flex-shrink-0">
+                                                    <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Floyd Miles">
+                                                </div>
+                                                <div class="min-w-0 flex-1">
+                                                    <p class="text-sm text-gray-800">What books do you have on your bookshelf just to look smarter than you actually are?</p>
+                                                    <div class="mt-2 flex">
+                          <span class="inline-flex items-center text-sm">
+                            <button type="button" class="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
+                              <!-- Heroicon name: solid/chat-alt -->
+                              <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                              </svg>
+                              <span class="font-medium text-gray-900">291</span>
+                            </button>
+                          </span>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <!-- More posts... -->
+                                        </ul>
+                                    </div>
+                                    <div class="mt-6">
+                                        <a href="#" class="w-full block text-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50"> View all </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </aside>
+            </div>
+        </div>
     </div>
 </x-guest-layout>
