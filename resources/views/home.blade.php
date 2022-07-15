@@ -350,8 +350,8 @@
                                 </div>
                             </nav>
                             <div class="flex items-center md:ml-12">
-                                <a href="#" class="text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </a>
-                                <a href="#" class="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </a>
+                                <a href="{{route('login')}}" class="text-base font-medium text-gray-500 hover:text-gray-900"> Sign in </a>
+                                <a href="{{route('register')}}" class="ml-8 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"> Sign up </a>
                             </div>
                         </div>
                     </div>
@@ -466,14 +466,14 @@
                     <div class="lg:grid lg:grid-cols-2 lg:gap-8">
                         <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
                             <div class="lg:py-24">
-                                <a href="#" class="inline-flex items-center text-white bg-black rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200">
+                                {{--<a href="#" class="inline-flex items-center text-white bg-black rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-200">
                                     <span class="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-indigo-500 rounded-full">We're hiring</span>
                                     <span class="ml-4 text-sm">Visit our careers page</span>
                                     <!-- Heroicon name: solid/chevron-right -->
                                     <svg class="ml-2 w-5 h-5 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                     </svg>
-                                </a>
+                                </a>--}}
                                 <h1 class="mt-4 text-4xl tracking-tight font-extrabold text-white sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
                                     <span class="block">A community to share</span>
                                     <span class="block text-indigo-400">your riced setups</span>
@@ -504,8 +504,8 @@
                     </svg>
 
                     <div class="relative">
-                        <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">A better way to send money</h2>
-                        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in, accusamus quisquam.</p>
+                        <h2 class="text-center text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">Be part of the unix community.</h2>
+                        <p class="mt-4 max-w-3xl mx-auto text-center text-xl text-gray-500">On Unix DB, we welcome anyone whether you are just visiting or uploading one of your new setups to share with everyone. You are all welcome.</p>
                     </div>
 
                     <div class="relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
@@ -623,6 +623,23 @@
                                 </svg>
                                 <img class="relative mx-auto" width="490" src="https://tailwindui.com/img/features/feature-example-2.png" alt="">
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50">
+                <div class="max-w-7xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+                    <h2 class="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                        <span class="block">Ready to dive in?</span>
+                        <span class="block">Start your free trial today.</span>
+                    </h2>
+                    <div class="mt-8 flex justify-center">
+                        <div class="inline-flex rounded-md shadow">
+                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"> Get started </a>
+                        </div>
+                        <div class="ml-3 inline-flex">
+                            <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200"> Learn more </a>
                         </div>
                     </div>
                 </div>
