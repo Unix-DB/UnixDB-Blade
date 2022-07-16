@@ -5,7 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Gpu>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\gpu>
  */
 class GpuFactory extends Factory
 {

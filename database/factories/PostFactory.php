@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\CPU;
+use App\Models\cpu;
 use App\Models\Distribution;
-use App\Models\GPU;
-use App\Models\RAM;
+use App\Models\gpu;
+use App\Models\ram;
 use App\Models\Resolution;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -30,9 +30,9 @@ class PostFactory extends Factory
 
             'distribution_id' => Distribution::query()->get('id')->random(),
             'resolution_id' => Resolution::query()->get('id')->random(),
-            'ram_id' => Ram::query()->get('id')->random(),
-            'cpu_id' => Cpu::query()->get('id')->random(),
-            'gpu_id' => Gpu::query()->get('id')->random(),
+            'ram_id' => ram::query()->get('id')->random(),
+            'cpu_id' => cpu::query()->get('id')->random(),
+            'gpu_id' => gpu::query()->get('id')->random(),
             'kernel_id' => Kernel::query()->get('id')->random(),
             'terminal_id' => Terminal::query()->get('id')->random(),
             'editor_id' => Editor::query()->get('id')->random(),

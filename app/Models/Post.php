@@ -31,17 +31,17 @@ class Post extends Model
 
     public function CPU()
     {
-        return $this->belongsTo(CPU::class);
+        return $this->belongsTo(cpu::class);
     }
 
     public function GPU()
     {
-        return $this->belongsTo(GPU::class);
+        return $this->belongsTo(gpu::class);
     }
 
     public function RAM()
     {
-        return $this->belongsTo(RAM::class);
+        return $this->belongsTo(ram::class);
     }
 
     public function Editor()
