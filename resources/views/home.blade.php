@@ -64,7 +64,7 @@
                                     -->
                                     <div x-show="explore" x-cloak class="hidden md:block absolute z-10 top-full inset-x-0 transform shadow-lg bg-white">
                                         <div class="max-w-7xl mx-auto grid gap-y-6 px-4 py-6 sm:grid-cols-2 sm:gap-8 sm:px-6 sm:py-8 lg:grid-cols-4 lg:px-8 lg:py-12 xl:py-16">
-                                            <a href="#" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
+                                            <a href="{{route('explore')}}" class="-m-3 p-3 flex flex-col justify-between rounded-lg hover:bg-gray-50">
                                                 <div class="flex md:h-full lg:flex-col">
                                                     <div class="flex-shrink-0">
                       <span class="inline-flex items-center justify-center h-10 w-10 rounded-md bg-indigo-500 text-white sm:h-12 sm:w-12">
