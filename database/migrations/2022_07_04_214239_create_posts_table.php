@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('shell_id');
             $table->text('resolution_id');
             $table->text('cpu_id');
-            $table->text('memory_id');
+            $table->text('ram_id');
             $table->text('gpu_id');
 
             $table->text('repository');
