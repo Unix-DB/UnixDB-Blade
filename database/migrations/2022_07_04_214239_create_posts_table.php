@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('title');
             $table->text('description');
             $table->integer('user_id');
+            $table->longText('image_url');
 
             $table->text('distribution_id');
             $table->text('kernel_id');
@@ -29,7 +30,7 @@ return new class extends Migration
             $table->text('memory_id');
             $table->text('gpu_id');
 
-            $table->longText('script');
+            $table->text('repository');
 
             $table->timestamps();
         });

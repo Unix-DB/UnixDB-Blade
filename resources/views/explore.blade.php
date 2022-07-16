@@ -199,8 +199,8 @@
                     <div class="flex-1 flex justify-between px-4 sm:px-6">
                         <div class="flex-1 flex">
                             <form class="w-full flex md:ml-0" action="#" method="GET">
-                                <label for="desktop-search-field" class="sr-only">Search all files</label>
-                                <label for="mobile-search-field" class="sr-only">Search all files</label>
+                                <label for="desktop-search-field" class="sr-only">Search</label>
+                                <label for="mobile-search-field" class="sr-only">Search</label>
                                 <div class="relative w-full text-gray-400 focus-within:text-gray-600">
                                     <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center">
                                         <!-- Heroicon name: solid/search -->
@@ -209,7 +209,7 @@
                                         </svg>
                                     </div>
                                     <input name="mobile-search-field" id="mobile-search-field" class="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:hidden" placeholder="Search" type="search">
-                                    <input name="desktop-search-field" id="desktop-search-field" class="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:block" placeholder="Search all files" type="search">
+                                    <input name="desktop-search-field" id="desktop-search-field" class="hidden h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400 sm:block" placeholder="Search" type="search">
                                 </div>
                             </form>
                         </div>
@@ -258,7 +258,7 @@
                 <main class="flex-1 overflow-y-auto">
                     <div class="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="flex">
-                            <h1 class="flex-1 text-2xl font-bold text-gray-900">Photos</h1>
+                            <h1 class="flex-1 text-2xl font-bold text-gray-900">Explore</h1>
                             <div class="ml-6 bg-gray-100 p-0.5 rounded-lg flex items-center sm:hidden">
                                 <button type="button" class="p-1.5 rounded-md text-gray-400 hover:bg-white hover:shadow-sm focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                                     <!-- Heroicon name: solid/view-list -->
@@ -322,18 +322,20 @@
                         <section class="mt-8 pb-16" aria-labelledby="gallery-heading">
                             <h2 id="gallery-heading" class="sr-only">Recently viewed</h2>
                             <ul role="list" class="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                                @foreach($posts as $p)
                                 <li class="relative">
                                     <!-- Current: "ring-2 ring-offset-2 ring-indigo-500", Default: "focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-indigo-500" -->
                                     <div class="ring-2 ring-offset-2 ring-indigo-500 group block w-full aspect-w-10 aspect-h-7 rounded-lg bg-gray-100 overflow-hidden">
                                         <!-- Current: "", Default: "group-hover:opacity-75" -->
-                                        <img src="https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80" alt="" class="object-cover pointer-events-none">
+                                        <img src="{{$p->image_url}}" alt="" class="object-cover pointer-events-none">
                                         <button type="button" class="absolute inset-0 focus:outline-none">
-                                            <span class="sr-only">View details for IMG_4985.HEIC</span>
+                                            <span class="sr-only">{{$p->title}}</span>
                                         </button>
                                     </div>
-                                    <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">IMG_4985.HEIC</p>
+                                    <p class="mt-2 block text-sm font-medium text-gray-900 truncate pointer-events-none">{{$p->title}}</p>
                                     <p class="block text-sm font-medium text-gray-500 pointer-events-none">3.9 MB</p>
                                 </li>
+                                @endforeach
 
                                 <!-- More files... -->
                             </ul>
