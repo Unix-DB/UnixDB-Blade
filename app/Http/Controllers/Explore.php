@@ -10,7 +10,7 @@ class Explore extends Controller
     public function view()
     {
         return view('explore', [
-            'posts' => Post::query(),
+            'posts' => Post::query()->orderByDesc('created_at')->paginate(25),
         ]);
     }
 }
